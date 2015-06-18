@@ -42,8 +42,8 @@ class myApp(wx.App):
                               size = (80,20),
                             style = wx.ALIGN_CENTER                              
                               )
-        text1.SetForegroundColour('white')
-        text1.SetBackgroundColour('black')
+#         text1.SetForegroundColour('white')
+#         text1.SetBackgroundColour('black')
         text2 = wx.StaticText(parent = panel,
                               id = -1,
                               label = u'前    缀',
@@ -52,8 +52,8 @@ class myApp(wx.App):
                             style = wx.ALIGN_CENTER  
                                                         
                               )
-        text2.SetForegroundColour('red')
-        text2.SetBackgroundColour('green')
+#         text2.SetForegroundColour('red')
+#         text2.SetBackgroundColour('green')
 #         增加单行文本框
         path = wx.TextCtrl(parent = panel,
                            id = -1, 
@@ -65,28 +65,27 @@ class myApp(wx.App):
                            pos = (85,30),
                            size = (200,20)
                            )
+        #多行文本显示框
+        global display_area
+        display_area = wx.TextCtrl(parent = panel,
+                                   id = -1,
+                                   pos = (85,60),
+                                   size = (200,100),
+                                   style = wx.TE_MULTILINE|wx.TE_RICH
+                                   ) 
+        #设置文本框中文字颜色
+        display_area.SetStyle(0,12,wx.TextAttr('red','blue'))
         
-    
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+       
         
         
         frame.SetBackgroundColour('white')
         frame.Show()
         return True
     def addbutton(self,event):
-        print 'add button'
+        display_area.SetValue('hello world')
     def removebutton(self,event):
-        print 'remove button'
+        display_area.SetValue('')
         
 app = myApp()
 app.MainLoop()
